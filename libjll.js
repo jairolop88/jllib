@@ -1,30 +1,31 @@
-// funciones mensaje eventos
-
-// ****************************
+/* jshint esversion: 6 */
 
 // functiones para botones
 
 function btn_event_run(btn_info) {
-    switch (btn_info.type) {
-        case 'btn_delete':
+    let action = {
+        btn_conlog: () => {
+            console.log(btn_info.objetive);
+        },
+        btn_delete: () => {
             content_delete(btn_info.objetive);
-            break;
-        case 'btn_copy':
-            // codigo para copiar informacion de una tabla
-            break;
-        case 'btn_write':
-            getSQ('#' + btn_info.objetive).value = "escribio";
-            break
-        default:
-            console.log('opcion sin configurar, datos: ', btn_info);
-            break;
+        },
+        btn_write: () => {
+            getSQ('#' + btn_info.objetive).value = 'escribio';
+        }
+    };
+    if (action[btn_info.type]) {
+        return action[btn_info.type]();
+    } else {
+        return conlog(`❗❗ 😐 No hay accion definida para el boton con id: "${btn_info.id}"`);
     }
 }
+
 function btn_event_capture(event) {
-    // conlog(event);
-    var btn_info = {};
-    btn_info['type'] = event.srcElement.id.split('-')[0];
-    btn_info['objetive'] = event.srcElement.id.split('-')[1];
+    let btn_info = {};
+    btn_info.type = event.srcElement.id.split('-')[0];
+    btn_info.objetive = event.srcElement.id.split('-')[1];
+    btn_info.id = event.srcElement.id;
     btn_event_run(btn_info);
 }
 // ***************************
@@ -39,16 +40,16 @@ function getSQ(selector, all = 0) {
     } else {
         object_data = document.querySelector(selector);
     }
-    // conlog(object_data);
     return object_data;
 }
+
 function content_delete(id_element) {
-    // conlog(id_element);
-    let element = getSQ('#' + id_element)
+    let element = getSQ('#' + id_element);
     if (element) {
         element.value = "";
     }
 }
+
 function conlog(object) {
     console.log(object);
 }
@@ -64,4 +65,4 @@ export {
     getSQ,
     content_delete,
     conlog,
-}
+};
