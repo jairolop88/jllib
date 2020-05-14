@@ -1,2 +1,2 @@
-# libjll
- libreria de funciones javaScript
+# jllib
+ creacion de libreria js para agilizar desarrollo de proyectos
