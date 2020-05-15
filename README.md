@@ -1,6 +1,6 @@
 # jllib
  creacion de libreria js para agilizar desarrollo de proyectos
-'apostrofe'
+`apostrofe`
 ''doble apostrofe''
 '''triple apostrofe'''
 -entre guion-
