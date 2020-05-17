@@ -27,7 +27,7 @@ class Menu {
          * 
          * @param {string} idMenu nombre de id del contenedor donde ira el menu 
          */
-    renderizarMenu(idMenu) {
+    renderizar(idMenu) {
         let codigoHTML = '';
         codigoHTML = '<ul>';
         this.opcions.forEach(opcion => {
